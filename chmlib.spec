@@ -7,6 +7,7 @@ License:	GPL
 Group:		Libraries
 Source0:	http://66.93.236.84/~jedwin/projects/chmlib/%{name}-%{version}.tbz
 Patch0:		%{name}-morearchs.patch
+Patch1:		%{name}-LIBDIR.patch
 # Source0-md5:	c6c9e1658f43715456e00a4893d496ed
 URL:		http://66.93.236.84/~jedwin/projects/chmlib/
 BuildRequires:	libtool
@@ -53,6 +54,7 @@ Statyczna wersja chmlib.
 %prep
 %setup -q
 %patch0 -p1
+%patch1
 
 %build
 %{__make} all examples \
@@ -60,14 +62,16 @@ Statyczna wersja chmlib.
 	LDFLAGS="%{rpmldflags} -lpthread" \
 	CC="%{__cc}" \
 	LD="%{__cc}" \
-	INSTALLPREFIX="%{_prefix}"
+	INSTALLPREFIX="%{_prefix}" \
+	LIBDIR=%{_libdir}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir},%{_bindir}}
 
 %{__make} install \
-	INSTALLPREFIX=$RPM_BUILD_ROOT%{_prefix}
+	INSTALLPREFIX=$RPM_BUILD_ROOT%{_prefix} \
+	LIBDIR=$RPM_BUILD_ROOT%{_libdir}
 
 install *_chmLib chm_http $RPM_BUILD_ROOT%{_bindir}
 

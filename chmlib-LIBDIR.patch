@@ -1,0 +1,46 @@
+--- Makefile~	2002-10-10 05:25:54.000000000 +0200
++++ Makefile	2004-12-27 17:05:51.482129376 +0100
+@@ -10,6 +10,7 @@
+ CFLAGS=-DCHM_MT -DCHM_USE_PREAD -DCHM_USE_IO64 -g -DDMALLOC_DISABLE
+ LDFLAGS=-lpthread
+ INSTALLPREFIX=/usr/local/
++LIBDIR=/usr/local/lib
+ CC=gcc-3.2
+ LD=gcc-3.2
+ LIBTOOL=libtool
+@@ -24,28 +25,28 @@
+ 	${LIBTOOL} ${CC} -c -o $@ $^ ${CFLAGS}
+ 
+ libchm.la: chm_lib.lo lzx.lo
+-	${LIBTOOL} ${LD} -o $@ $^ ${LDFLAGS} -rpath ${INSTALLPREFIX}/lib
++	${LIBTOOL} ${LD} -o $@ $^ ${LDFLAGS} -rpath ${LIBDIR}
+ 
+ install: libchm.la
+ 	chmod a+r libchm.la
+-	${LIBTOOL} --mode=install ${CP} libchm.la ${INSTALLPREFIX}/lib
++	${LIBTOOL} --mode=install ${CP} libchm.la ${LIBDIR}
+ 	${CP} chm_lib.h ${INSTALLPREFIX}/include
+ 
+ clean:
+ 	rm -fr libchm.la *.o *.lo .libs ${EXAMPLES}
+ 
+ test_chmLib: test_chmLib.c
+-	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${INSTALLPREFIX}/lib -lchm ${CFLAGS}
++	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${LIBDIR} -lchm ${CFLAGS}
+ 
+ enum_chmLib: enum_chmLib.c
+-	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${INSTALLPREFIX}/lib -lchm ${CFLAGS}
++	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${LIBDIR} -lchm ${CFLAGS}
+ 
+ enumdir_chmLib: enumdir_chmLib.c
+-	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${INSTALLPREFIX}/lib -lchm ${CFLAGS}
++	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${LIBDIR} -lchm ${CFLAGS}
+ 
+ extract_chmLib: extract_chmLib.c
+-	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${INSTALLPREFIX}/lib -lchm ${CFLAGS}
++	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${LIBDIR} -lchm ${CFLAGS}
+ 
+ chm_http: chm_http.c
+-	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${INSTALLPREFIX}/lib -lchm -lpthread ${CFLAGS}
++	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${LIBDIR} -lchm -lpthread ${CFLAGS}
+ 
