@@ -15,14 +15,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 chmlib is a small library designed for accessing MS ITSS files. The
-ITSS file format is used for Microsoft Html Help files (.chm), which
+ITSS file format is used for Microsoft HTML Help files (.chm), which
 have been the predominant medium for software documentation from
 Microsoft during the past several years, having superceded the
 previously used .hlp file format.
 
 %description -l pl
 chmlib to niewielka biblioteka przeznaczona do odczytu plików MS ITSS.
-Format ITSS jest u¿ywany w plikach Microsoft Html Help (.chm), które
+Format ITSS jest u¿ywany w plikach Microsoft HTML Help (.chm), które
 sta³y siê dominuj±cym medium dla elektronicznej dokumentacji
 udostêpnianej przez Microsoft w ostatnim czasie, zastêpuj±c poprzednio
 u¿ywane pliki .hlp.
