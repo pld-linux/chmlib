@@ -8,6 +8,7 @@ Group:		Libraries
 Source0:	http://66.93.236.84/~jedwin/projects/chmlib/%{name}-%{version}.tbz
 # Source0-md5:	c6c9e1658f43715456e00a4893d496ed
 URL:		http://66.93.236.84/~jedwin/projects/chmlib/
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
