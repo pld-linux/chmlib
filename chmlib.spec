@@ -1,14 +1,14 @@
 Summary:	chmlib - library designed for accessing MS ITSS files
 Summary(pl):	chmlib - biblioteka pozwalaj±ca na dostêp do plików MS ITSS
 Name:		chmlib
-Version:	0.31
-Release:	5
+Version:	0.33
+Release:	0.1
 License:	GPL
 Group:		Libraries
 Source0:	http://66.93.236.84/~jedwin/projects/chmlib/%{name}-%{version}.tbz
+# Source0-md5:	8bc84e94f1cea65005e5cb0ab40e2e86
 Patch0:		%{name}-morearchs.patch
 Patch1:		%{name}-LIBDIR.patch
-# Source0-md5:	c6c9e1658f43715456e00a4893d496ed
 URL:		http://66.93.236.84/~jedwin/projects/chmlib/
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -52,18 +52,18 @@ Static version of chmlib.
 Statyczna wersja chmlib.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 %patch0 -p1
-%patch1
+%patch1 -p1
 
 %build
 %{__make} all examples \
-	CFLAGS="%{rpmcflags} -DCHM_MT -DCHM_USE_PREAD -DCHM_USE_IO64 -L.libs" \
+	CFLAGS="%{rpmcflags} -DCHM_MT -DCHM_USE_PREAD -DCHM_USE_IO64 -Lsrc/.libs" \
 	LDFLAGS="%{rpmldflags} -lpthread" \
-	CC="%{__cc}" \
 	LD="%{__cc}" \
 	INSTALLPREFIX="%{_prefix}" \
-	LIBDIR=%{_libdir}
+	LIBDIR=%{_libdir} 
+#	CC="%{__cc}" 
 
 %install
 rm -rf $RPM_BUILD_ROOT

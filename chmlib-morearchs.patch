@@ -1,11 +1,12 @@
---- chmlib-0.31/chm_lib.c.orig	2003-11-19 08:55:04.000000000 +0000
-+++ chmlib-0.31/chm_lib.c	2003-11-19 09:17:01.000000000 +0000
-@@ -142,14 +142,15 @@
- /* I386, 32-bit, non-Windows */
+diff -urN chmlib.orig/src/chm_lib.c chmlib/src/chm_lib.c
+--- chmlib.orig/src/chm_lib.c	2004-05-03 23:29:04.000000000 +0200
++++ chmlib/src/chm_lib.c	2004-07-05 14:38:31.000000000 +0200
+@@ -157,14 +157,15 @@
  /* Sparc        */
  /* MIPS         */
--#elif __i386__ || __sun || __sgi
-+#elif __i386__ || __sun || __sgi || __linux__
+ /* PPC          */
+-#elif __i386__ || __sun || __sgi || __ppc__
++#elif __i386__ || __sun || __sgi || __ppc__ || __linux__
 +#include <stdint.h>
  typedef unsigned char           UChar;
 -typedef short                   Int16;
@@ -23,7 +24,7 @@
  #else
  
  /* yielding an error is preferable to yielding incorrect behavior */
-@@ -1089,7 +1090,7 @@
+@@ -1123,7 +1124,7 @@
       *      that is provided for us.
       */
      struct chmPmglHeader header;
@@ -32,7 +33,7 @@
      UChar *end;
      UChar *cur;
      UChar *temp;
-@@ -1136,7 +1137,7 @@
+@@ -1165,7 +1166,7 @@
       *      that is provided for us
       */
      struct chmPmgiHeader header;
@@ -41,12 +42,3 @@
      int page=-1;
      UChar *end;
      UChar *cur;
-@@ -1244,7 +1245,7 @@
-                              Int64 *len)
- {
-     UChar buffer[8], *dummy;
--    UInt32 remain;
-+    unsigned long remain;
- 
-     /* for all but the last block, use the reset table */
-     if (block < h->reset_table.block_count-1)
