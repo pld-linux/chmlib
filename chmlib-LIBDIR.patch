@@ -1,13 +1,12 @@
-diff -urN chmlib.orig/Makefile chmlib/Makefile
---- chmlib.orig/Makefile	2004-07-05 15:04:04.000000000 +0200
-+++ chmlib/Makefile	2004-07-05 15:02:57.000000000 +0200
+--- chmlib-0.35/Makefile.in.orig	2004-06-29 02:26:20.000000000 +0200
++++ chmlib-0.35/Makefile.in	2004-07-05 22:16:57.963115624 +0200
 @@ -11,6 +11,7 @@
- CFLAGS=-g -O2 -DCHM_MT -DCHM_USE_PREAD -DCHM_USE_IO64 -DDMALLOC_DISABLE 
- LDFLAGS= -lpthread
- INSTALLPREFIX=/usr/local
-+LIBDIR=/usr/local/lib
- CC=gcc
- top_builddir=
+ CFLAGS=@CFLAGS@ @CHM_MT@ @CHM_USE_PREAD@ @CHM_USE_IO64@ @DMALLOC_DISABLE@ 
+ LDFLAGS=@LDFLAGS@
+ INSTALLPREFIX=@prefix@
++LIBDIR=@libdir@
+ CC=@CC@
+ top_builddir=@top_builddir@
  ifeq ($(top_builddir),)
 @@ -27,28 +28,28 @@
  	${LIBTOOL} --mode=compile ${CC} -c -o $@ $^ ${CFLAGS}
