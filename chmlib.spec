@@ -2,7 +2,7 @@ Summary:	chmlib - library designed for accessing MS ITSS files
 Summary(pl):	chmlib - biblioteka pozwalaj±ca na dostêp do plików MS ITSS
 Name:		chmlib
 Version:	0.35
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	http://66.93.236.84/~jedwin/projects/chmlib/%{name}-%{version}.tbz
@@ -10,7 +10,7 @@ Source0:	http://66.93.236.84/~jedwin/projects/chmlib/%{name}-%{version}.tbz
 Patch0:		%{name}-morearchs.patch
 Patch1:		%{name}-LIBDIR.patch
 URL:		http://66.93.236.84/~jedwin/projects/chmlib/
-BuildRequires:	libtool
+BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -31,7 +31,7 @@ u¿ywane pliki .hlp.
 Summary:	chmlib header files
 Summary(pl):	Pliki nag³ówkowe chmlib
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files needed for building programs that use chmlib.
@@ -43,7 +43,7 @@ Pliki nag³ówkowe potrzebne do tworzenia programów z u¿yciem chmlib.
 Summary:	chmlib static library
 Summary(pl):	Biblioteka statyczna chmlib
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static version of chmlib.
@@ -57,13 +57,13 @@ Statyczna wersja chmlib.
 %patch1 -p1
 
 %build
-%{__make} all examples \
-	CFLAGS="%{rpmcflags} -DCHM_MT -DCHM_USE_PREAD -DCHM_USE_IO64 -Lsrc/.libs" \
-	LDFLAGS="%{rpmldflags} -lpthread" \
-	LD="%{__cc}" \
-	INSTALLPREFIX="%{_prefix}" \
-	LIBDIR=%{_libdir} 
-	#CC="%{__cc}" 
+cp -f /usr/share/automake/config.* .
+%configure
+
+%{__make}
+
+%{__make} examples \
+	LIBDIR=src/.libs
 
 %install
 rm -rf $RPM_BUILD_ROOT
