@@ -5,9 +5,9 @@ Version:	0.2
 Release:	1
 License:	GPL
 Group:		Libraries
-Source0:	http://64.81.172.220/~jedwin/projects/chmlib/%{name}-%{version}.tbz
+Source0:	http://66.93.236.84/~jedwin/projects/chmlib/%{name}-%{version}.tbz
 # Source0-md5:	6e62d23986ecdf75466a3c0df7ceb2cd
-URL:		http://64.81.172.220/~jedwin/projects/chmlib/
+URL:		http://66.93.236.84/~jedwin/projects/chmlib/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
