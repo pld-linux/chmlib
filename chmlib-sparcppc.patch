@@ -1,0 +1,11 @@
+--- chm_lib.c~	2002-10-10 05:25:54.000000000 +0200
++++ chm_lib.c	2003-11-08 09:53:23.000000000 +0100
+@@ -142,7 +142,7 @@
+ /* I386, 32-bit, non-Windows */
+ /* Sparc        */
+ /* MIPS         */
+-#elif __i386__ || __sun || __sgi
++#elif __i386__ || __sun || __sgi || __sparc__ || __ppc__
+ typedef unsigned char           UChar;
+ typedef short                   Int16;
+ typedef unsigned short          UInt16;
