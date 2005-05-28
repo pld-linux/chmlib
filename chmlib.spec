@@ -10,6 +10,7 @@ Source0:	http://66.93.236.84/~jedwin/projects/chmlib/%{name}-%{version}.tbz
 Patch0:		%{name}-morearchs.patch
 Patch1:		%{name}-LIBDIR.patch
 URL:		http://66.93.236.84/~jedwin/projects/chmlib/
+BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -58,6 +59,7 @@ Statyczna wersja chmlib.
 
 %build
 cp -f /usr/share/automake/config.* .
+%{__autoconf}
 %configure
 
 %{__make}
