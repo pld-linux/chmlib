@@ -1,7 +1,6 @@
-diff -urN chmlib.orig/src/chm_lib.c chmlib/src/chm_lib.c
---- chmlib.orig/src/chm_lib.c	2004-05-03 23:29:04.000000000 +0200
-+++ chmlib/src/chm_lib.c	2004-07-05 14:38:31.000000000 +0200
-@@ -157,14 +157,15 @@
+--- chmlib-0.36/src/chm_lib.c.orig	2005-09-09 14:42:27.000000000 +0200
++++ chmlib-0.36/src/chm_lib.c	2005-09-19 14:26:33.000000000 +0200
+@@ -160,14 +160,15 @@
  /* Sparc        */
  /* MIPS         */
  /* PPC          */
@@ -21,24 +20,6 @@ diff -urN chmlib.orig/src/chm_lib.c chmlib/src/chm_lib.c
 +typedef uint32_t                UInt32;
 +typedef int64_t                 Int64;
 +typedef uint64_t                UInt64;
- #else
  
- /* yielding an error is preferable to yielding incorrect behavior */
-@@ -1123,7 +1124,7 @@
-      *      that is provided for us.
-      */
-     struct chmPmglHeader header;
--    UInt32 hremain;
-+    unsigned long hremain;
-     UChar *end;
-     UChar *cur;
-     UChar *temp;
-@@ -1165,7 +1166,7 @@
-      *      that is provided for us
-      */
-     struct chmPmgiHeader header;
--    UInt32 hremain;
-+    unsigned long hremain;
-     int page=-1;
-     UChar *end;
-     UChar *cur;
+ /* x86-64 */
+ /* Note that these may be appropriate for other 64-bit machines. */

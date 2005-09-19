@@ -1,5 +1,5 @@
---- chmlib-0.35/Makefile.in.orig	2004-06-29 02:26:20.000000000 +0200
-+++ chmlib-0.35/Makefile.in	2004-07-05 22:16:57.963115624 +0200
+--- chmlib-0.36/Makefile.in.orig	2005-09-09 14:38:57.000000000 +0200
++++ chmlib-0.36/Makefile.in	2005-09-19 14:29:26.000000000 +0200
 @@ -11,6 +11,7 @@
  CFLAGS=@CFLAGS@ @CHM_MT@ @CHM_USE_PREAD@ @CHM_USE_IO64@ @DMALLOC_DISABLE@ 
  LDFLAGS=@LDFLAGS@
@@ -8,7 +8,7 @@
  CC=@CC@
  top_builddir=@top_builddir@
  ifeq ($(top_builddir),)
-@@ -27,28 +28,28 @@
+@@ -28,29 +29,29 @@
  	${LIBTOOL} --mode=compile ${CC} -c -o $@ $^ ${CFLAGS}
  
  src/libchm.la: src/chm_lib.lo src/lzx.lo
@@ -17,30 +17,31 @@
  
  install: src/libchm.la
  	chmod a+r src/libchm.la
+ 	mkdir -p ${INSTALLPREFIX}
 -	${LIBTOOL} --mode=install cp src/libchm.la ${INSTALLPREFIX}/lib
 +	${LIBTOOL} --mode=install cp src/libchm.la ${LIBDIR}
- 	cp src/chm_lib.h ${INSTALLPREFIX}/include
+ 	cp $(srcdir)/src/chm_lib.h ${INSTALLPREFIX}/include
  
  clean:
  	rm -fr src/libchm.la src/*.o src/*.lo .libs src/.libs src/${EXAMPLES}
  
- test_chmLib: src/test_chmLib.c
+ test_chmLib: $(srcdir)/src/test_chmLib.c
 -	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${INSTALLPREFIX}/lib -lchm ${CFLAGS}
 +	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${LIBDIR} -lchm ${CFLAGS}
  
- enum_chmLib: src/enum_chmLib.c
+ enum_chmLib: $(srcdir)/src/enum_chmLib.c
 -	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${INSTALLPREFIX}/lib -lchm ${CFLAGS}
 +	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${LIBDIR} -lchm ${CFLAGS}
  
- enumdir_chmLib: src/enumdir_chmLib.c
+ enumdir_chmLib: $(srcdir)/src/enumdir_chmLib.c
 -	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${INSTALLPREFIX}/lib -lchm ${CFLAGS}
 +	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${LIBDIR} -lchm ${CFLAGS}
  
- extract_chmLib: src/extract_chmLib.c
+ extract_chmLib: $(srcdir)/src/extract_chmLib.c
 -	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${INSTALLPREFIX}/lib -lchm ${CFLAGS}
 +	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${LIBDIR} -lchm ${CFLAGS}
  
- chm_http: src/chm_http.c
+ chm_http: $(srcdir)/src/chm_http.c
 -	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${INSTALLPREFIX}/lib -lchm -lpthread ${CFLAGS}
 +	${CC} -o $@ $^ -I${INSTALLPREFIX}/include -L${LIBDIR} -lchm -lpthread ${CFLAGS}
  
