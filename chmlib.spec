@@ -1,12 +1,12 @@
 Summary:	chmlib - library designed for accessing MS ITSS files
 Summary(pl):	chmlib - biblioteka pozwalaj±ca na dostêp do plików MS ITSS
 Name:		chmlib
-Version:	0.36
+Version:	0.37.3
 Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	http://66.93.236.84/~jedwin/projects/chmlib/%{name}-%{version}.tbz
-# Source0-md5:	fd895bc91d13c18867a5dac6d44ef772
+# Source0-md5:	073f4cbb7cee68dc56b2e9b707503625
 Patch0:		%{name}-morearchs.patch
 Patch1:		%{name}-LIBDIR.patch
 URL:		http://66.93.236.84/~jedwin/projects/chmlib/
@@ -53,7 +53,7 @@ Static version of chmlib.
 Statyczna wersja chmlib.
 
 %prep
-%setup -q
+%setup -q -n %{name}-0.37
 %patch0 -p1
 %patch1 -p1
 
@@ -69,11 +69,10 @@ cp -f /usr/share/automake/config.* .
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir},%{_bindir}}
+install -d $RPM_BUILD_ROOT%{_bindir}
 
 %{__make} install \
-	INSTALLPREFIX=$RPM_BUILD_ROOT%{_prefix} \
-	LIBDIR=$RPM_BUILD_ROOT%{_libdir}
+	DESTDIR=$RPM_BUILD_ROOT
 
 install *_chmLib chm_http $RPM_BUILD_ROOT%{_bindir}
 
@@ -91,9 +90,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/*.h
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
+%{_includedir}/*.h
 
 %files static
 %defattr(644,root,root,755)
