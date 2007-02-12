@@ -1,5 +1,5 @@
 Summary:	chmlib - library designed for accessing MS ITSS files
-Summary(pl):	chmlib - biblioteka pozwalaj±ca na dostêp do plików MS ITSS
+Summary(pl.UTF-8):   chmlib - biblioteka pozwalajÄ…ca na dostÄ™p do plikÃ³w MS ITSS
 Name:		chmlib
 Version:	0.37.4
 Release:	2
@@ -20,35 +20,35 @@ have been the predominant medium for software documentation from
 Microsoft during the past several years, having superceded the
 previously used .hlp file format.
 
-%description -l pl
-chmlib to niewielka biblioteka przeznaczona do odczytu plików MS ITSS.
-Format ITSS jest u¿ywany w plikach Microsoft HTML Help (.chm), które
-sta³y siê dominuj±cym medium dla elektronicznej dokumentacji
-udostêpnianej przez Microsoft w ostatnim czasie, zastêpuj±c poprzednio
-u¿ywane pliki .hlp.
+%description -l pl.UTF-8
+chmlib to niewielka biblioteka przeznaczona do odczytu plikÃ³w MS ITSS.
+Format ITSS jest uÅ¼ywany w plikach Microsoft HTML Help (.chm), ktÃ³re
+staÅ‚y siÄ™ dominujÄ…cym medium dla elektronicznej dokumentacji
+udostÄ™pnianej przez Microsoft w ostatnim czasie, zastÄ™pujÄ…c poprzednio
+uÅ¼ywane pliki .hlp.
 
 %package devel
 Summary:	chmlib header files
-Summary(pl):	Pliki nag³ówkowe chmlib
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe chmlib
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files needed for building programs that use chmlib.
 
-%description devel -l pl
-Pliki nag³ówkowe potrzebne do tworzenia programów z u¿yciem chmlib.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe potrzebne do tworzenia programÃ³w z uÅ¼yciem chmlib.
 
 %package static
 Summary:	chmlib static library
-Summary(pl):	Biblioteka statyczna chmlib
+Summary(pl.UTF-8):   Biblioteka statyczna chmlib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static version of chmlib.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna wersja chmlib.
 
 %prep
