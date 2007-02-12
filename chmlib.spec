@@ -1,5 +1,5 @@
 Summary:	chmlib - library designed for accessing MS ITSS files
-Summary(pl.UTF-8):   chmlib - biblioteka pozwalająca na dostęp do plików MS ITSS
+Summary(pl.UTF-8):	chmlib - biblioteka pozwalająca na dostęp do plików MS ITSS
 Name:		chmlib
 Version:	0.37.4
 Release:	2
@@ -29,7 +29,7 @@ używane pliki .hlp.
 
 %package devel
 Summary:	chmlib header files
-Summary(pl.UTF-8):   Pliki nagłówkowe chmlib
+Summary(pl.UTF-8):	Pliki nagłówkowe chmlib
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -41,7 +41,7 @@ Pliki nagłówkowe potrzebne do tworzenia programów z użyciem chmlib.
 
 %package static
 Summary:	chmlib static library
-Summary(pl.UTF-8):   Biblioteka statyczna chmlib
+Summary(pl.UTF-8):	Biblioteka statyczna chmlib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
