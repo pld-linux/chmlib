@@ -58,12 +58,10 @@ Statyczna wersja chmlib.
 %build
 cp -f /usr/share/automake/config.* .
 %{__autoconf}
-%configure
+%configure \
+	--enable-examples
 
 %{__make}
-
-%{__make} examples \
-	libdir=src/.libs
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -71,8 +69,6 @@ install -d $RPM_BUILD_ROOT%{_bindir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-install *_chmLib chm_http $RPM_BUILD_ROOT%{_bindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -91,6 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libchm.so
 %{_libdir}/libchm.la
 %{_includedir}/chm_lib.h
+%{_includedir}/lzx.h
 
 %files static
 %defattr(644,root,root,755)
