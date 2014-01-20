@@ -2,7 +2,7 @@ Summary:	chmlib - library designed for accessing MS ITSS files
 Summary(pl.UTF-8):	chmlib - biblioteka pozwalająca na dostęp do plików MS ITSS
 Name:		chmlib
 Version:	0.40
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Source0:	http://www.jedrea.com/chmlib/%{name}-%{version}.tar.gz
@@ -81,6 +81,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS NEWS README
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/libchm.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libchm.so.0
 
 %files devel
 %defattr(644,root,root,755)
