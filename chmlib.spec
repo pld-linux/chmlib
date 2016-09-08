@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	chmlib - biblioteka pozwalająca na dostęp do plików MS ITS
 Name:		chmlib
 Version:	0.40
 Release:	3
-License:	GPL
+License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.jedrea.com/chmlib/%{name}-%{version}.tar.gz
 # Source0-md5:	96b8e9ac52015902941862171f5daa4c
@@ -79,7 +79,11 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/chm_http
+%attr(755,root,root) %{_bindir}/enum_chmLib
+%attr(755,root,root) %{_bindir}/enumdir_chmLib
+%attr(755,root,root) %{_bindir}/extract_chmLib
+%attr(755,root,root) %{_bindir}/test_chmLib
 %attr(755,root,root) %{_libdir}/libchm.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libchm.so.0
 
